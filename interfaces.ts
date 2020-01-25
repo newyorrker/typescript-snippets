@@ -8,6 +8,11 @@ interface Rect {
   }
 }
 
+//наследование интерфейсов
+interface RectWithArea extends Rect {
+  getArea: () => Number,
+};
+
 //невалидный интерфейс
 const rect1: Rect = {
   id: '12d'
@@ -28,11 +33,6 @@ rect2.id = '12dck';
 //приведение к типу
 const rect3 = {} as Rect;
 
-//наследование интерфейсов
-
-interface RectWithArea extends Rect {
-  getArea: () => Number,
-};
 
 const rect5: RectWithArea = {
   id: '123',
@@ -45,3 +45,22 @@ const rect5: RectWithArea = {
     return 500
   }
 }
+
+
+//реализация
+interface IClock {
+ time: Date,
+ setTime(date: Date): void
+};
+
+class Clock implements IClock {
+  time: Date = new Date()
+  setTime(date: Date) {
+    this.time = date;
+  }
+}
+
+//перечисляемые свойства интерфейса
+interface Styles {
+ [key: string]: String
+};
